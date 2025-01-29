@@ -3,22 +3,25 @@ import React from 'react'
 import { CustomersTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import { Metadata } from 'next';
+import Table from '@/app/ui/customers/table';
+import { fetchFilteredCustomers } from '@/app/lib/data';
 
 export const metadata: Metadata = {
   title: 'Customers',
 };
 
-const page = () => {
+export default async function page(props: {
+  searchParams?: Promise<{
+    query?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
   return (
     <div className="w-full">
-      <div className='flex w-full items-center justify-between'>
-        <h1 className={`${lusitana.className} text-2xl`}>Customers</h1>
-      </div>
-      <Suspense fallback={<CustomersTableSkeleton />}>
-        {/* <CustomersTable customers={fetchCustomers()} /> */}
+      <Suspense key={query} fallback={<CustomersTableSkeleton />}>
+        <Table query={query} />
       </Suspense>
     </div>
   )
 }
-
-export default page
