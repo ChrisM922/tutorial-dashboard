@@ -1,9 +1,7 @@
-import CustomersTable from '@/app/ui/customers/table';
 import { lusitana } from '@/app/ui/fonts';
 import React from 'react'
 import { CustomersTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
-import { fetchCustomers } from '@/app/lib/data';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
