@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    localPatterns: [{ pathname: '/public/**/*' }],
+    localPatterns: [{ pathname: '/public/*' }],
   },
   /* config options here */
   experimental: {
